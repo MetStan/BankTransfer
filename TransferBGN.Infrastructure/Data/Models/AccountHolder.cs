@@ -16,11 +16,12 @@
         }
 
         [Key]
+        [MaxLength(36)]
         public string Id { get; set; }
 
         [Required]
-        [MaxLength(35)]
-        public string? FullName { get; set; }
+        [MaxLength(36)]
+        public string FullName { get; set; }
 
 
         public ICollection<Iban> Ibans{ get; set; }

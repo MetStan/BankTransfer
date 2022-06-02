@@ -18,6 +18,6 @@
 
         [Required]
         [MaxLength(10)]
-        public string? Name { get; set; }
+        public string Name { get; set; }
     }
 }
