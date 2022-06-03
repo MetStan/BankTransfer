@@ -1,4 +1,4 @@
-﻿namespace TransferBGN.Core.Models
+﻿namespace TransferBGN.Core.Models.Transfer
 {
     using System;
 

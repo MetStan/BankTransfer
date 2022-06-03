@@ -1,17 +1,13 @@
-﻿namespace TransferBGN.Core.Models
+﻿namespace TransferBGN.Core.Models.Transfer
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class TransferInputModel
     {
         [Required]
         [MaxLength(36)]
-        public string OrderingBankName { get; set; }
+        public string OrderingBank { get; set; }
 
         [Required]
         [MaxLength(36)]
@@ -22,7 +18,7 @@
         [MaxLength(36)]
         public string OrderingBankAddress { get; set; }
 
-        public DateTime DateOfSubmission { get; set; } = DateTime.Now;
+        public DateTime DateOfSubmission { get; set; } = DateTime.UtcNow;
 
         [Required]
         [MaxLength(36)]
@@ -64,6 +60,10 @@
         public string OrderingAccountHolder { get; set; }
 
         [Required]
+        [MaxLength(3)]
+        public string CurrencyCode { get; set; }
+
+        [Required]
         [MaxLength(22)]
         [RegularExpression(@"^[Bb][Gg][0-9]{2}[a-zA-Z]{4}[0-9]{6}[a-zA-Z0-9]{8}$")]
         public string OrderingAccount { get; set; }
@@ -75,15 +75,14 @@
 
         [Required]
         [MaxLength(10)]
-        public string PaymentSystem { get; set; }
+        public string PaymentSystem { get; set; } = "Бисера";
 
 
-        //[MaxLength(3)]
-        //public string FeeType { get; set; }
+        [MaxLength(3)]
+        public string FeeType { get; set; } = "002";
 
         public DateTime DateOfPayment { get; set; }
 
-
-        public bool IsDeleted { get; set; } = false;
+        //public bool IsDeleted { get; set; } = false;
     }
 }

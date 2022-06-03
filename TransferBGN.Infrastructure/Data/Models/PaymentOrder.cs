@@ -6,7 +6,7 @@
 
     public class PaymentOrder
     {
-        public PaymentOrder(string id)
+        public PaymentOrder()
         {
             Id = Guid.NewGuid().ToString();
         }
@@ -45,7 +45,7 @@
 
         [Required]
         [ForeignKey(nameof(OrderingAccount))]
-        [MaxLength(22)]
+        [MaxLength(36)]
         public string OrderingAccountId { get; set; }
         public Iban OrderingAccount { get; set; }
 
@@ -59,7 +59,7 @@
 
         [Required]
         [ForeignKey(nameof(BeneficiaryAccount))]
-        [MaxLength(22)]
+        [MaxLength(36)]
         public string BeneficiaryAccountId { get; set; }
         public Iban BeneficiaryAccount { get; set; }
 
@@ -79,16 +79,16 @@
 
         [Required]
         [ForeignKey(nameof(PaymentSystem))]
-        [MaxLength(10)]
+        [MaxLength(36)]
         public string PaymentSystemId { get; set; }
         public PaymentSystem PaymentSystem { get; set; }
 
 
         [ForeignKey(nameof(FeeType))]
-        [MaxLength(3)]
+        [MaxLength(36)]
         public string FeeTypeId { get; set; }
-        public FeeType? FeeType { get; set; }
+        public FeeType FeeType { get; set; }
 
-        public bool IsDeleted { get; set; } = false;
+        //public bool IsDeleted { get; set; } = false;
     }
 }

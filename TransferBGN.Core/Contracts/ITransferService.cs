@@ -1,7 +1,7 @@
 ﻿namespace TransferBGN.Core.Contracts
 {
     using System.Collections.Generic;
-    using TransferBGN.Core.Models;
+    using TransferBGN.Core.Models.Transfer;
 
     public interface ITransferService
     {

@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using TransferBGN.Core.Contracts;
-    using TransferBGN.Core.Models;
+    using TransferBGN.Core.Models.Transfer;
     using TransferBGN.Infrastructure.Data;
 
     public class TransferService : ITransferService

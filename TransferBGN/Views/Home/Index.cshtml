@@ -1,8 +1,41 @@
 ﻿@{
-    ViewData["Title"] = "Платежно нареждане";
+    ViewData["Title"] = "Наредени Преводи";
 }
 
-@*<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>*@
+@model IList<TransferListViewModel>
+
+<table class="table table-bordered downloads tablesorter">
+    <thead>
+        <tr>
+            <th class="head">Наредител</th>
+            <th class="head">IBAN Наредител</th>
+            <th class="head">Банка Наредител</th>
+            <th class="head">Наредена сума</th>
+            <th class="head">Основание за плащане</th>
+            <th class="head">Получател</th>
+            <th class="head">IBAN Получател</th>
+            <th class="head">Банка Получател</th>
+            <th class="head">Дата на превода</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@item.OrderingAccountHolder</td>
+                <td>@item.OrderingAccount</td>
+                <td>@item.OrderingBank</td>
+                <td>@item.Amount @item.CurrencyCode</td>
+                <td>@item.ReasonForPayment @item.AdditionalComment</td>
+                <td>@item.BeneficiaryAccountHolder</td>
+                <td>@item.BeneficiaryAccount</td>
+                <td>@item.BeneficiaryBank</td>
+                <td>@item.DateOfSubmission</td>
+                <td>@item.DateOfPayment</td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+

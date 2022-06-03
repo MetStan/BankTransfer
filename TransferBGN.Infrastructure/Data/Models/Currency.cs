@@ -3,13 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
-    public class FeeType
+    public class Currency
     {
-        public FeeType()
+        public Currency()
         {
             Id = Guid.NewGuid().ToString();
-            PaymentOrders = new HashSet<PaymentOrder>();
+
+            this.PaymentOrders = new HashSet<PaymentOrder>();
         }
 
         [Key]
@@ -17,8 +17,8 @@
         public string Id { get; set; }
 
         [Required]
-        [MaxLength(10)]
-        public string Name { get; set; }
+        [MaxLength(3)]
+        public string CurrencyCode { get; set; }
 
         public ICollection<PaymentOrder> PaymentOrders { get; set; }
     }

@@ -13,6 +13,8 @@
         public DbSet<FeeType> FeeTypes { get; set; }
 
         public DbSet<Iban> Ibans { get; set; }
+        
+        public DbSet<Currency> Currencies { get; set; }
 
         public DbSet<PaymentOrder> PaymentOrders { get; set; }
 
@@ -69,10 +71,10 @@
                 .HasForeignKey(k => k.BeneficiaryAccountHolderId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder
-                .Entity<Iban>()
-                .Property(i => i.Balance)
-                .HasPrecision(10, 3);
+            //builder
+            //    .Entity<Iban>()
+            //    .Property(i => i.Balance)
+            //    .HasPrecision(10, 3);
 
             builder
                 .Entity<PaymentOrder>()
@@ -81,6 +83,5 @@
 
             base.OnModelCreating(builder);
         }
-
     }
 }

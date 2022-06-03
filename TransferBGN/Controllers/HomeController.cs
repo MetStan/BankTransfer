@@ -1,32 +1,27 @@
 ﻿namespace TransferBGN.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using System.Diagnostics;
-    using TransferBGN.Models;
+    using TransferBGN.Core.Contracts;
 
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ITransferService service;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ITransferService service)
         {
-            _logger = logger;
+            this.service = service;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var allTransfers = service.All();
+
+            return View(allTransfers);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View($"Redirect");
+            return View();
             //return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

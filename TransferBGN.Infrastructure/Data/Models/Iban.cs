@@ -12,7 +12,6 @@
             Id = Guid.NewGuid().ToString();
             OrderingAccountPaymentOrders = new HashSet<PaymentOrder>();
             BeneficiaryAccountPaymentOrders = new HashSet<PaymentOrder>();
-            //OpenDate = DateTime.Now;
         }
 
         [Key]
@@ -25,10 +24,9 @@
         [MaxLength(22)]
         public string IbanN { get; set; }
 
-        [MaxLength(13)]
-        public decimal Balance { get; set; }
+        //[MaxLength(13)]
+        //public decimal Balance { get; set; }
 
-        //public DateTime OpenDate { get; set; }
 
         [Required]
         [MaxLength(36)]
@@ -36,14 +34,17 @@
         public string AccountHolderId { get; set; }
         public AccountHolder AccountHolder { get; set; }
 
-        //public int CurrencyId { get; set; }
-
-        //public virtual Currency? CurrencyCode { get; set; }
 
         [Required]
         [MaxLength(36)]
         public string BankId { get; set; }
         public Bank Bank { get; set; }
+
+        [Required]
+        [MaxLength(36)]
+        [ForeignKey(nameof(CurrencyCode))]
+        public string CurrencyId { get; set; }
+        public Currency CurrencyCode { get; set; }
 
 
         [InverseProperty("OrderingAccount")]
