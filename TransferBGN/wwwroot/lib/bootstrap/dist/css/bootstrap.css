@@ -64,6 +64,19 @@
   box-sizing: border-box;
 }
 
+
+.center {
+    border: 5px #fff;
+    text-align: center;
+}
+
+/*.center div {
+    margin: auto;
+    width: 60%;
+    border: 5px solid #0d6efd;
+    padding: 10px;
+}*/
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
@@ -3405,7 +3418,7 @@ textarea.form-control-lg {
 .btn-link {
   font-weight: 400;
   color: #0d6efd;
-  text-decoration: underline;
+  text-decoration:;
 }
 .btn-link:hover {
   color: #0a58ca;
@@ -11216,6 +11229,7 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+
 }
 
 /*# sourceMappingURL=bootstrap.css.map */

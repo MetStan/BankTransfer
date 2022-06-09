@@ -371,6 +371,8 @@ namespace TransferBGN.Data.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.Property<string>("CurrencyId")
+                        .IsRequired()
+                        .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
                     b.Property<DateTime>("DateOfPayment")
@@ -546,9 +548,11 @@ namespace TransferBGN.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("TransferBGN.Infrastructure.Data.Models.Currency", null)
+                    b.HasOne("TransferBGN.Infrastructure.Data.Models.Currency", "Currency")
                         .WithMany("PaymentOrders")
-                        .HasForeignKey("CurrencyId");
+                        .HasForeignKey("CurrencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TransferBGN.Infrastructure.Data.Models.FeeType", "FeeType")
                         .WithMany("PaymentOrders")
@@ -585,6 +589,8 @@ namespace TransferBGN.Data.Migrations
                     b.Navigation("BeneficiaryAccountHolder");
 
                     b.Navigation("BeneficiaryBank");
+
+                    b.Navigation("Currency");
 
                     b.Navigation("FeeType");
 

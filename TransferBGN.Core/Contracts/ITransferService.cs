@@ -2,14 +2,18 @@
 {
     using System.Collections.Generic;
     using TransferBGN.Core.Models.Transfer;
+    using TransferBGN.Infrastructure.Data.Models;
 
     public interface ITransferService
     {
-        TransferInputModel Create(TransferInputModel model);
+        PaymentOrder Create(TransferInputModel model);
 
-        void Update(TransferInputModel model);
+        IEnumerable<TransferViewModel> Latest();
 
         IEnumerable<TransferViewModel> All();
+        
+        void Update(TransferInputModel model);
+
 
         void Delete(string id);
 

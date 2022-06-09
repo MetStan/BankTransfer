@@ -14,9 +14,9 @@
 
         public IActionResult Index()
         {
-            var allTransfers = service.All();
+            var latestTransfers = service.Latest();
 
-            return View(allTransfers);
+            return View(latestTransfers);
         }
 
         public IActionResult Error()

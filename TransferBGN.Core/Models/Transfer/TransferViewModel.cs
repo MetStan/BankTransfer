@@ -8,15 +8,15 @@
 
         public decimal Amount { get; init; }
 
-        public string ReasonForPayment { get; init; }
+        public string CurrencyCode { get; init; }
 
-        public string? AdditionalComment { get; init; }
+        public string ReasonForPayment { get; init; }
 
         public string OrderingAccountHolder { get; init; }
 
         public string OrderingAccount { get; init; }
 
-        public string OrderingBankName { get; init; }
+        public string OrderingBank { get; init; }
 
         public string OrderingBankBranch { get; init; }
 

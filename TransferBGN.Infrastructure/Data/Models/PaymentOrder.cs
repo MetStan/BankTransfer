@@ -83,6 +83,11 @@
         public string PaymentSystemId { get; set; }
         public PaymentSystem PaymentSystem { get; set; }
 
+        [Required]
+        [ForeignKey(nameof(Currency))]
+        [MaxLength(36)]
+        public string CurrencyId { get; set; }
+        public Currency Currency { get; set; }
 
         [ForeignKey(nameof(FeeType))]
         [MaxLength(36)]

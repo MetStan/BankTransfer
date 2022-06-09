@@ -1,41 +1,56 @@
-﻿@{
-    ViewData["Title"] = "Наредени Преводи";
+﻿@model IList<TransferViewModel>
+
+@{
+    ViewData["Title"] = "Платежно Нареждане";
 }
 
-@model IList<TransferListViewModel>
-
-<table class="table table-bordered downloads tablesorter">
-    <thead>
-        <tr>
-            <th class="head">Наредител</th>
-            <th class="head">IBAN Наредител</th>
-            <th class="head">Банка Наредител</th>
-            <th class="head">Наредена сума</th>
-            <th class="head">Основание за плащане</th>
-            <th class="head">Получател</th>
-            <th class="head">IBAN Получател</th>
-            <th class="head">Банка Получател</th>
-            <th class="head">Дата на превода</th>
-        </tr>
-    </thead>
-
-    @foreach (var item in Model)
-    {
-        <tbody>
+@if (Model.Any())
+{
+    <table class="table table-sripted table-bordered downloads tablesorter">
+        <thead>
             <tr>
-                <td>@item.OrderingAccountHolder</td>
-                <td>@item.OrderingAccount</td>
-                <td>@item.OrderingBank</td>
-                <td>@item.Amount @item.CurrencyCode</td>
-                <td>@item.ReasonForPayment @item.AdditionalComment</td>
-                <td>@item.BeneficiaryAccountHolder</td>
-                <td>@item.BeneficiaryAccount</td>
-                <td>@item.BeneficiaryBank</td>
-                <td>@item.DateOfSubmission</td>
-                <td>@item.DateOfPayment</td>
+                <th> Наредител</th>
+                <th> IBAN Наредител</th>
+                <th> Банка Наредител</th>
+                <th> Наредена сума</th>
+                <th> Основание за плащане</th>
+                <th> Получател</th>
+                <th> IBAN Получател</th>
+                <th> Банка Получател</th>
+                <th> Дата на предоставяне</th>
+                <th> Дата на изпълнение</th>
+                @*<th class="head">Дата на превода</th>*@
             </tr>
-        </tbody>
-    }
+        </thead>
 
-</table>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.OrderingAccountHolder</td>
+                    <td>@item.OrderingAccount</td>
+                    <td>@item.OrderingBank</td>
+                    <td>@item.Amount @item.CurrencyCode</td>
+                    <td>@item.ReasonForPayment</td>
+                    <td>@item.BeneficiaryAccountHolder</td>
+                    <td>@item.BeneficiaryAccount</td>
+                    <td>@item.BeneficiaryBank</td>
+                    <td>@item.DateOfSubmission</td>
+                    <td>@item.DateOfPayment</td>
+                    <td>
+                        @*<a asp-action="Edit" asp-route-id="@item.Id">Редактиране</a>  <a asp-action="Delay" asp-route-id="@item.Id">Изтриване</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
+                        <a asp-area="" asp-controller="Transfer" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning float-right ml-3">Edit</a>
+                        <a asp-area="" asp-controller="Transfer" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger float-right ml-3">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+else
+{
+    <div class="p-3 mt-3 bg-info text-white text-center"> <h3>Няма въведени преводи! </h3></div>
+}
 
